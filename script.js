@@ -1,21 +1,21 @@
-var wakeuptime = 7;
-var noon = 12;
-var lunchtime = 12;
-var naptime = lunchtime + 2;
-var partytime;
-var evening = 18;
+let wakeuptime = 7;
+let noon = 12;
+let lunchtime = 12;
+let naptime = lunchtime + 2;
+let partytime;
+let evening = 18;
 
 // Getting it to show the current time on the page
-var showCurrentTime = function () {
+let showCurrentTime = function () {
     // Display the string on the webpage
-    var clock = document.getElementById('clock');
+    let clock = document.getElementById('clock');
 
-    var currentTime = new Date();
+    let currentTime = new Date();
 
-    var hours = currentTime.getHours();
-    var minutes = currentTime.getMinutes();
-    var seconds = currentTime.getSeconds();
-    var meridian = "AM";
+    let hours = currentTime.getHours();
+    let minutes = currentTime.getMinutes();
+    let seconds = currentTime.getSeconds();
+    let meridian = "AM";
 
     // Set hours
     if (hours >= noon) {
@@ -37,20 +37,20 @@ var showCurrentTime = function () {
     }
 
     // Put together the string that displays the time
-    const clockTime = `${hours}:${minutes}:${seconds} ${meridian}!`;
-    // var clockTime = hours + ':' + minutes + ':' + seconds + ':' + " " + meridian + "!";
+    let clockTime = `${hours}:${minutes}:${seconds} ${meridian}!`;
+    // let clockTime = hours + ':' + minutes + ':' + seconds + ':' + " " + meridian + "!";
     clock.innerText = clockTime;
 };
 
 // Getting the clock to increment on its own and change out messages and pictures
 
-var updateClock = function () {
-    var time = new Date().getHours();
-    var messageText;
-    var image = "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/08/normalTime.jpg";
+let updateClock = function () {
+    let time = new Date().getHours();
+    let messageText;
+    let image = "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/08/normalTime.jpg";
 
-    var timeEventJS = document.getElementById('timeEvent');
-    var lolcatImageJs = document.getElementById('lolcatImage');
+    let timeEventJS = document.getElementById('timeEvent');
+    let lolcatImageJs = document.getElementById('lolcatImage');
 
     if (time == partytime) {
         image = "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/08/partyTime.jpg";
@@ -90,13 +90,13 @@ var updateClock = function () {
 updateClock();
 
 // Getting the clock to increment once a second
-var oneSecond = 1000;
+let oneSecond = 1000;
 setInterval(updateClock, oneSecond);
 
 // Getting the Party Time button to work
-var partyButton = document.getElementById("partyTimeButton");
+let partyButton = document.getElementById("partyTimeButton");
 
-var partyEvent = function () {
+let partyEvent = function () {
     if (partytime < 0) {
         partytime = new Date().getHours();
         partyTimeButton.innerText = "Party Over!";
@@ -104,9 +104,6 @@ var partyEvent = function () {
     }
     else {
         partytime = -1;
-        partyTimeButton.innerText = "Party Time";
-        partyTimeButton.style.backgroundColor = "#222";
-
     }
 };
 
@@ -114,27 +111,27 @@ partyButton.addEventListener("click", partyEvent);
 partyEvent();
 
 // Activates wake up selector
-var wakeUpSelector = document.getElementById("wakeUpTimeSelector");
+let wakeUpSelector = document.getElementById("wakeUpTimeSelector");
 
-var wakeUpEvent = function () {
+let wakeUpEvent = function () {
     wakeuptime = wakeUpTimeSelector.value;
 };
 
 wakeUpTimeSelector.addEventListener("change", wakeUpEvent);
 
 // Activates Lunch Selector
-var lunchTimeSelector = document.getElementById("lunchTimeSelector");
+let lunchTimeSelector = document.getElementById("lunchTimeSelector");
 
-var lunchEvent = function () {
+let lunchEvent = function () {
     lunchtime = lunchTimeSelector.value;
 };
 
 lunchTimeSelector.addEventListener("change", lunchEvent);
 
 // Acvtivates Nap-Time selector
-var napTimeSelector = document.getElementById("napTimeSelector");
+let napTimeSelector = document.getElementById("napTimeSelector");
 
-var napEvent = function () {
+let napEvent = function () {
     naptime = napTimeSelector.value;
 };
 
